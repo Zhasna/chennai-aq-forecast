@@ -1,0 +1,26 @@
+# Secrets
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Data (DVC will manage this later, never commit raw data to git)
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# ML artifacts
+mlruns/
+*.pkl
+*.joblib
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
