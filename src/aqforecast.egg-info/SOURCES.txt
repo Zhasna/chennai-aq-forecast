@@ -1,7 +1,0 @@
-README.md
-pyproject.toml
-src/aqforecast/__init__.py
-src/aqforecast.egg-info/PKG-INFO
-src/aqforecast.egg-info/SOURCES.txt
-src/aqforecast.egg-info/dependency_links.txt
-src/aqforecast.egg-info/top_level.txt
