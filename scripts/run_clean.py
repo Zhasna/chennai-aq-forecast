@@ -4,7 +4,8 @@ import pandas as pd
 
 from aqforecast.clean import clean_hourly, to_daily
 
-RAW, OUT = Path("data/raw"), Path("data/processed")
+ROOT = Path(__file__).resolve().parents[1]
+RAW, OUT = ROOT / "data" / "raw", ROOT / "data" / "processed"
 
 
 def main():
