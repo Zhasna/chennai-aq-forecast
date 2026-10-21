@@ -5,6 +5,7 @@ TZ = "Asia/Kolkata"
 MIN_COVERAGE = 0.75   
 STUCK_HOURS = 6       
 MIN_HOURS_PER_DAY = 18
+SENSOR_CEILING = 1000.0
 
 
 def clean_hourly(raw, min_coverage=MIN_COVERAGE, stuck_hours=STUCK_HOURS):
@@ -31,6 +32,10 @@ def clean_hourly(raw, min_coverage=MIN_COVERAGE, stuck_hours=STUCK_HOURS):
     zero = v == 0
     v = v.mask(zero)
     stats["zeros"] = int(zero.sum())
+
+    capped = v >= SENSOR_CEILING
+    v = v.mask(capped)
+    stats["capped"] = int(capped.sum())
 
     run_id = (v != v.shift()).cumsum()
     run_len = v.groupby(run_id).transform("size")

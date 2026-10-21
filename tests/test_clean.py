@@ -48,3 +48,8 @@ def test_daily_requires_enough_hours():
 
     sparse, _ = clean_hourly(make_raw([10.0 + i for i in range(10)]))
     assert to_daily(sparse).pm25.isna().all()
+
+def test_sensor_ceiling_masked():
+    out, stats = clean_hourly(make_raw([20.0, 1000.0, 25.0]))
+    assert out.pm25.isna().tolist() == [False, True, False]
+    assert stats["capped"] == 1
