@@ -12,7 +12,8 @@ load_dotenv()
 BASE = "https://api.openaq.org/v3"
 API_KEY = os.getenv("OPENAQ_API_KEY")
 START, END = "2025-02-18", "2026-10-15"
-OUT = Path("data/raw")
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "data" / "raw"
 
 SENSORS = {
     "manali_village": 12235796,
